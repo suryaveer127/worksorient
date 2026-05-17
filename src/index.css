@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-gray-800 bg-white antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-primary-700 hover:bg-primary-800 text-white font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-primary-700/30 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border-2 border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-white {
+    @apply inline-flex items-center gap-2 bg-white text-primary-700 hover:bg-primary-50 font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .section-tag {
+    @apply inline-block text-primary-600 font-semibold text-sm uppercase tracking-widest mb-3;
+  }
+
+  .section-title {
+    @apply font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-gray-500 text-lg leading-relaxed mt-4 max-w-2xl;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary-700/10;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-700 to-primary-500 bg-clip-text text-transparent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #1d5928;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #163b1d;
+}
+
+/* Page transition */
+.page-transition {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating shapes */
+.shape-blob {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: morphBlob 8s ease-in-out infinite;
+}
+
+@keyframes morphBlob {
+  0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  25%       { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+  50%       { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+  75%       { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+}
+
+/* Hero gradient orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: floatOrb 10s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -30px) scale(1.1); }
+  66%       { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* Number counter shimmer */
+.counter-card {
+  position: relative;
+  overflow: hidden;
+}
+.counter-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.counter-card:hover::before {
+  transform: translateX(100%);
+}
+
+/* Service card icon animation */
+.service-icon-wrap {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.group:hover .service-icon-wrap {
+  transform: scale(1.1) rotate(-5deg);
+  background-color: #1d5928;
+}
+.group:hover .service-icon-wrap svg {
+  color: white;
+}
+
+/* Underline animation */
+.animated-underline {
+  position: relative;
+}
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #1d5928;
+  transition: width 0.3s ease;
+}
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Hamburger animation */
+.ham-line {
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
